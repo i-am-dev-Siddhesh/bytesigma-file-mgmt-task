@@ -1,6 +1,8 @@
 import FileService from '@/services/File';
 import { useState } from 'react';
 import FileInput from '../FormControls/FileInput'; // Assuming FileInput is in the same directory
+import { toast } from 'react-toastify';
+import { errorFormatter } from '@/utils';
 
 const UploadImagesForm = () => {
     const [file, setFile] = useState<File | null>(null);
@@ -13,17 +15,20 @@ const UploadImagesForm = () => {
             setError(null);
             const formData = new FormData();
             formData.append('images', file as File);
-            const resp = await FileService.createImages(formData);
+            await FileService.createImages(formData);
             setFile(null);
+            toast.success("Added")
         } catch (error: any) {
+            const message = errorFormatter(error)
+            toast.error(message)
         } finally {
             setIsLoading(false);
         }
     };
 
     return (
-        <form>
-            <FileInput setFile={setFile} name="image" label="Upload Image" />
+        <form className="mx-auto max-w-[320px]">
+            <FileInput setFile={setFile} file={file} name="image" label="Upload Image" />
             {error && <p className="text-red-500 text-xs">{error}</p>}
             <button
                 type="submit"
