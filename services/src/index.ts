@@ -28,7 +28,7 @@ const main = async () => {
 
   app.use(
     cors({
-      origin: [process.env.CLIENT_URL!],
+      origin: [process.env.CLIENT_URL!, 'http://localhost:3000'],
       methods: ['POST', 'PATCH', 'PUT', 'GET', 'OPTIONS', 'HEAD', 'DELETE'],
       credentials: true,
     })
