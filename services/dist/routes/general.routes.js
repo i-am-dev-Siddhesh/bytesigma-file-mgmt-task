@@ -11,5 +11,6 @@ const router = express_1.default.Router({ mergeParams: true });
 const upload = (0, multer_1.default)({ dest: 'uploads/' });
 router
     .route('/upload/images')
+    .get(middlewares_1.checkApiKey, general_controller_1.findImages)
     .post(middlewares_1.checkApiKey, upload.fields([{ name: 'images' }]), general_controller_1.createImages);
 exports.default = router;

@@ -26,9 +26,7 @@ const createImages = (req, res) => __awaiter(void 0, void 0, void 0, function* (
                 for (let i = 0; i < imagesFiles.length; i++) {
                     const image = imagesFiles[i];
                     const result = yield (0, s3_1.uploadToS3)(image, 'images');
-                    const id = i;
                     resp.push({
-                        id,
                         url: result.resp.Location,
                         fileName: result.fileName,
                         uploadedDate: new Date().toISOString(),
