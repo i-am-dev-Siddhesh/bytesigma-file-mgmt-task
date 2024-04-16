@@ -26,17 +26,30 @@ const uploadToS3 = (file, folderName) => __awaiter(void 0, void 0, void 0, funct
         const bucketName = process.env.AWS_S3_BUCKET_NAME;
         const fileStream = fs_1.default.createReadStream(file === null || file === void 0 ? void 0 : file.path);
         const fileType = file.mimetype;
-        const fileName = folderName
+        const Key = folderName
             ? `${folderName}/${file.filename}.${fileType.split('/').pop()}`
             : `${file.filename}.${fileType.split('/').pop()}`;
         const uploadParams = {
             Bucket: bucketName,
             Body: fileStream,
-            Key: fileName,
+            Key: Key,
             ContentType: fileType,
         };
+        // image {
+        //   [1]   fieldname: 'images',
+        //   [1]   originalname: 'Untitled.jpg',
+        //   [1]   encoding: '7bit',
+        //   [1]   mimetype: 'image/jpeg',
+        //   [1]   destination: 'uploads/',
+        //   [1]   filename: 'da3a3a3584fced04c2dc72b4e8ade46f',
+        //   [1]   path: 'uploads\\da3a3a3584fced04c2dc72b4e8ade46f',
+        //   [1]   size: 9281
+        //   [1] }
         const resp = yield s3.upload(uploadParams).promise();
-        return { resp, fileName };
+        return {
+            resp,
+            fileName: (0, index_1.generateFileName)(file),
+        };
     }
     catch (error) {
         throw error;

@@ -14,7 +14,7 @@ export const createImages = async (req: Request, res: Response) => {
       const imagesFiles = req.files.images;
       if (imagesFiles) {
         for (let i = 0; i < imagesFiles.length; i++) {
-          const image = imagesFiles[i];
+          const image = imagesFiles[i];          
           const result = await uploadToS3(image, 'images');
           resp.push({
             url: result.resp.Location,
