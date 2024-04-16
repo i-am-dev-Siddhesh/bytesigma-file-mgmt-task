@@ -79,17 +79,17 @@ const FileInput: React.FC<FileInputProps> = ({
   };
 
   return (
-    <div className="flex flex-col mb-4">
+    <div className="flex flex-col">
       <label
         htmlFor={name}
-        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        className="block mb-1 text-sm font-bold text-gray-900"
       >
         {label}
       </label>
       <input
         type="file"
         id={name}
-        className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+        className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 py-3 px-2"
         onChange={handleFileChange}
       />
       {previewImage && file && (
