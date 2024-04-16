@@ -49,11 +49,11 @@ const UploadImagesForm = () => {
     };
 
     return (
-        <form className="mx-36 py-5 w-full">
+        <form className="mx-5 md:mx-36 py-5">
             <h1 className='p-0 mb-2  text-3xl text-bolder text-black'>Upload Files</h1>
             {files &&
                 files.map((file, index) => (
-                    <div key={index} className="mb-4 flex gap-4">
+                    <div key={index} className="mb-4 flex gap-4 flex-col md:flex-row">
                         <FileInput
                             setFile={(newFile) => {
                                 const newFiles: any = files ? [...files] : [];
@@ -66,17 +66,17 @@ const UploadImagesForm = () => {
                         />
                         <button
                             type="button"
-                            className="bg-red-500 max-h-[100px] text-white-500 mt-6 px-4 rounded-lg "
+                            className="bg-red-500 h-[50px] text-white-500 mt-6 px-4 rounded-lg "
                             onClick={() => handleRemoveFile(index)}
                         >
                             Remove
                         </button>
                     </div>
                 ))}
-            <div className='flex gap-2 w-full'>
+            <div className='flex flex-col mt-2 gap-10 w-full'>
                 <button
                     type="button"
-                    className="bg-blue-500 text-white py-2 px-4 rounded-lg "
+                    className="bg-blue-500  h-[50px] text-white py-2 px-4 rounded-lg "
                     onClick={handleAddFile}
                 >
                     Add File
@@ -85,7 +85,7 @@ const UploadImagesForm = () => {
                 <button
                     type="submit"
                     disabled={isLoading}
-                    className={`bg-green-500 text-white py-2 px-4 rounded-lg ${isLoading && 'opacity-50 cursor-not-allowed'
+                    className={`bg-green-500 h-[50px] text-white py-2 px-4 rounded-lg ${isLoading && 'opacity-50 cursor-not-allowed'
                         }`}
                     onClick={onSubmit}
                 >

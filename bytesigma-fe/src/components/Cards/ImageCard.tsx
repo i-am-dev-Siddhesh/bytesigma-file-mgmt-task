@@ -8,7 +8,7 @@ interface ImageCardProps {
 
 const ImageCard: React.FC<ImageCardProps> = ({ imageUrl, fileName, uploadedDate }) => {
     return (
-        <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-2xl dark:bg-gray-800 dark:border-gray-700 overflow-hidden">
+        <div className="max-w-full md:max-w-sm bg-white border border-gray-200 rounded-lg shadow-2xl dark:bg-gray-800 dark:border-gray-700 overflow-hidden">
             <img className="rounded-t-lg w-full" src={imageUrl} alt={fileName} />
             <div className="p-5">
                 <div className="flex flex-col justify-between mb-3">

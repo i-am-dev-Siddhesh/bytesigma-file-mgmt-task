@@ -29,9 +29,9 @@ const ImageShower = () => {
                 <Spinner />
             ) : (
                 <>
-                    <h1 className='p-0 mx-28 text-3xl text-bolder text-black'>Uploaded Files
+                    <h1 className='p-0 md:mx-28 text-3xl text-bolder text-black'>Uploaded Files
                     </h1>
-                    <div className='flex px-10 gap-5 flex-wrap mx-10 justify-center'>
+                    <div className='flex md:px-10 gap-5 flex-wrap md:mx-10 justify-center'>
                         {imageData?.map((image: any) => (
                             <ImageCard fileName={image.fileName} imageUrl={image.url} uploadedDate={image.uploadedDate} key={image.fileName} />
                         ))}
